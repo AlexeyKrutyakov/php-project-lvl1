@@ -1,0 +1,12 @@
+{
+    "name": "hexlet/code",
+    "description": "first project by hexlet with php",
+    "type": "project",
+    "authors": [
+        {
+            "name": "arctikbear",
+            "email": "coder.arctik@gmail.com"
+        }
+    ],
+    "require": {}
+}
