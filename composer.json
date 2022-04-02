@@ -1,7 +1,11 @@
 {
+    "bin": [
+        "bin/brain-games"
+    ],
     "name": "hexlet/code",
     "description": "first project by hexlet with php",
     "type": "project",
+    "license": "MIT",
     "authors": [
         {
             "name": "arctikbear",
