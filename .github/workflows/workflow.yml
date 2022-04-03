@@ -12,9 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: install
-        # Install project
-        run: make install
       - name: Run Linter
         # Run Linter
         run: make lint
