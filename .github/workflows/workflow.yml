@@ -14,4 +14,4 @@ jobs:
     steps:
       - name: Run Linter
         # Run Linter
-        run: make lint
+        run: echo 'Hello World'
