@@ -19,7 +19,7 @@ use function cli\prompt;
 
 /**
  * Playing with user
- * 
+ *
  * @return nothing
  */
 function playEven()
@@ -31,7 +31,7 @@ function playEven()
 
     // game
     line('Answer "yes" if the number is even, otherwise answer "no".');
-    
+
     $attempts = 3;
     $failGame = false;
 
@@ -54,11 +54,11 @@ function playEven()
 }
 /**
  * Bad finishing game
- * 
+ *
  * @param string $name          User's name
  * @param string $answer        User's answer
  * @param string $correctAnswer rigth answer
- * 
+ *
  * @return nothing
  */
 function badFinish($name, $answer, $correctAnswer)
@@ -69,7 +69,7 @@ function badFinish($name, $answer, $correctAnswer)
 
 /**
  * One step of the game
- * 
+ *
  * @return Array [integer $guessNumber, string $correctAnswer]
  */
 function guess()
@@ -86,9 +86,9 @@ function guess()
 
 /**
  * Parity check
- * 
+ *
  * @param integer $number number to check
- * 
+ *
  * @return bool
  */
 function isEven($number)
