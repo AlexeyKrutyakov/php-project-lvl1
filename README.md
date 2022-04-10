@@ -4,4 +4,4 @@
 ![example workflow](https://github.com/arctikbear/php-project-lvl1/actions/workflows/workflow.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-<a href="https://asciinema.org/a/6KYjNahTlSupuW6Wkj6lk8Z65" target="_blank"><img src="https://asciinema.org/a/6KYjNahTlSupuW6Wkj6lk8Z65.svg" /></a>
+https://asciinema.org/a/6KYjNahTlSupuW6Wkj6lk8Z65
