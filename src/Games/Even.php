@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file content functions for brain-even-game
+ * Brain game 'Even'
  *
  * PHP version 8
  *
@@ -12,28 +12,24 @@
  * @link     http://coder-arctik.com
  */
 
-namespace Brain\Games\Even;
+namespace Brain\Games\Games\Even;
 
 use function cli\line;
 use function cli\prompt;
 
 /**
- * Playing with user
+ * Playing brain-even game
+ *
+ * @param integer $attempts number of game attempts
  *
  * @return nothing
  */
-function playEven()
+function playEven($attempts)
 {
-    // greeting
-    line('Welcome to the Brain Games!');
-    $name = prompt('May I have your name?');
-    line("Hello, {$name}!");
-
-    // game
-    line('Answer "yes" if the number is even, otherwise answer "no".');
-
-    $attempts = 3;
     $failGame = false;
+
+    // show task
+    line('Answer "yes" if the number is even, otherwise answer "no".');
 
     for ($i = 0; $i < $attempts; $i++) {
         [$guessNumber, $correctAnswer] = guess();
@@ -42,29 +38,11 @@ function playEven()
         if ($answer === $correctAnswer) {
             line('Correct!');
         } else {
-            badFinish($name, $answer, $correctAnswer);
             $failGame = true;
             break;
         }
     }
-
-    if ($failGame === false) {
-        line("Congratulations, {$name}!");
-    }
-}
-/**
- * Bad finishing game
- *
- * @param string $name          User's name
- * @param string $answer        User's answer
- * @param string $correctAnswer rigth answer
- *
- * @return nothing
- */
-function badFinish($name, $answer, $correctAnswer)
-{
-    line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
-    line("Let's try again, {$name}!");
+    return [$correctAnswer, $answer, $failGame];
 }
 
 /**
@@ -75,13 +53,14 @@ function badFinish($name, $answer, $correctAnswer)
 function guess()
 {
     $number = rand(1, 100);
+    $question = "{$number}";
     if (isEven($number)) {
         $correctAnswer = 'yes';
     } else {
         $correctAnswer = 'no';
     }
 
-    return [$number, $correctAnswer];
+    return [$question, $correctAnswer];
 }
 
 /**
