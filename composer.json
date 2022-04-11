@@ -1,7 +1,8 @@
 {
     "bin": [
         "bin/brain-games",
-        "bin/brain-even"
+        "bin/brain-even",
+        "bin/brain-calc"
     ],
     "name": "hexlet/code",
     "description": "first project by hexlet with php",
@@ -22,7 +23,7 @@
     "autoload": {
         "files": [
             "src/Cli.php",
-            "src/Even.php"
+            "src/Engine.php"
     ]
     }
 }
