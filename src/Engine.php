@@ -16,6 +16,8 @@ namespace Brain\Games\Engine;
 
 use function cli\line;
 use function cli\prompt;
+use function Brain\Games\Games\Even\playEven;
+use function Brain\Games\Games\Calc\playCalc;
 
 /**
  * Playing with user
@@ -31,26 +33,23 @@ function playGame($gameName)
     $userName = prompt('May I have your name?');
     line("Hello, {$userName}!");
 
-    // game
-    showTask($gameName);
-
     $attempts = 3;
-    $failGame = false;
 
-    for ($i = 0; $i < $attempts; $i++) {
-        [$guessNumber, $correctAnswer] = guess($gameName);
-        line("Question: {$guessNumber}");
-        $answer = prompt("Your answer");
-        if ($answer === $correctAnswer) {
-            line('Correct!');
-        } else {
-            badFinish($userName, $answer, $correctAnswer);
-            $failGame = true;
+    switch ($gameName) {
+        case 'even':
+            [$correctAnswer, $answer, $failGame] = playEven($attempts);
             break;
-        }
+        case 'calc':
+            [$correctAnswer, $answer, $failGame] = playCalc($attempts);
+            break;
+        default:
+            // error
+            break;
     }
 
-    if ($failGame === false) {
+    if ($failGame === true) {
+        badFinish($userName, $answer, $correctAnswer);
+    } else {
         line("Congratulations, {$userName}!");
     }
 }
@@ -68,90 +67,4 @@ function badFinish($userName, $answer, $correctAnswer)
 {
     line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
     line("Let's try again, {$userName}!");
-}
-
-/**
- * Show task for game
- *
- * @param string $gameName name of game
- *
- * @return nothing
- */
-function showTask($gameName)
-{
-    switch ($gameName) {
-        case 'even':
-            line('Answer "yes" if the number is even, otherwise answer "no".');
-            break;
-        case 'calc':
-            line('What is the result of the expression?');
-            break;
-        default:
-            // error
-            break;
-    }
-}
-
-/**
- * One step of the game
- *
- * @return Array [integer $guessNumber, string $correctAnswer]
- */
-function guess($gameName)
-{
-    switch ($gameName) {
-        case 'even':
-            $number = rand(1, 100);
-            $question = "{$number}";
-            if (isEven($number)) {
-                $correctAnswer = 'yes';
-            } else {
-                $correctAnswer = 'no';
-            }
-            break;
-        case 'calc':
-            $first = rand(1, 100);
-            $second = rand(1, 100);
-            $operatorIndex = rand(0, 2);
-            switch ($operatorIndex) {
-                case 0:
-                    $number = $first + $second;
-                    $operator = "+";
-                    break;
-                case 1:
-                    $number = $first - $second;
-                    $operator = "-";
-                    break;
-                case 2:
-                    $number = $first * $second;
-                    $operator = "*";
-                    break;
-                default:
-                    // error
-                    break;
-            }
-            $question = "{$first} {$operator} {$second}";
-            $correctAnswer = "{$number}";
-            break;
-        default:
-            // error
-            break;
-    }
-
-    return [$question, $correctAnswer];
-}
-
-/**
- * Parity check
- *
- * @param integer $number number to check
- *
- * @return bool
- */
-function isEven($number)
-{
-    if ($number % 2 === 0) {
-        return true;
-    }
-    return false;
 }
