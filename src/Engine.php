@@ -57,7 +57,7 @@ function playGame($gameName)
 /**
  * Bad finishing game
  *
- * @param string $userName      User's userName
+ * @param string $userName      User's name
  * @param string $answer        User's answer
  * @param string $correctAnswer rigth answer
  *
